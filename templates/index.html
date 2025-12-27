@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Price Prediction</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h2>🏠 House Price Prediction</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>BHK</label>
+        <input type="number" name="bhk" required>
+
+        <label>Square Feet</label>
+        <input type="number" name="squarefeet" required>
+
+        <label>Area Type</label>
+        <select name="areatype">
+            <option value="">-- Select Area Type --</option>
+
+            <option value="Normal">Normal</option>
+            <option value="VIP">VIP</option>
+        </select>
+
+        <label>Location</label>
+            <select name="location" required>
+                <option value="">-- Select Location --</option>
+
+                <option value="Navrangpura">Navrangpura</option>
+                <option value="Bopal">Bopal</option>
+                <option value="Vastrapur">Vastrapur</option>
+                <option value="Nikol">Nikol</option>
+                <option value="Zundal">Zundal</option>
+                <option value="Maninagar">Maninagar</option>
+                <option value="Paldi">Paldi</option>
+                <option value="Ellisbridge">Ellisbridge</option>
+                <option value="SG Highway">SG Highway</option>
+                <option value="Gota">Gota</option>
+                <option value="Chandkheda">Chandkheda</option>
+                <option value="Satellite">Satellite</option>
+
+            </select>
+
+        <button type="submit">Predict Price</button>
+    </form>
+
+    {% if prediction %}
+        <div class="result">
+            Estimated Price <br>
+            ₹ {{ prediction | floatformat:2}} {{ price_unit }}
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
