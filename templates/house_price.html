@@ -4,8 +4,39 @@
 <head>
     <title>House Price Prediction</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        .home-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 16px;
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            z-index: 1000;
+        }
+
+        .home-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+        }
+
+        footer {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 13px;
+            color: #777;
+        }
+    </style>    
 </head>
 <body>
+
+<a href="{% url 'home' %}" class="home-btn">🏠 Home</a>
 
 <div class="container">
     <h2>🏠 House Price Prediction</h2>
@@ -55,7 +86,12 @@
             ₹ {{ prediction | floatformat:2}} {{ price_unit }}
         </div>
     {% endif %}
+
+    <footer>
+        ML Based House Price Prediction
+    </footer>
 </div>
+
 
 </body>
 </html>

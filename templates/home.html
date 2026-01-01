@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ML Prediction System</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1d2671, #c33764);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 800px;
+            max-width: 95%;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        p {
+            text-align: center;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            padding: 30px;
+            border-radius: 14px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .house {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+        }
+
+        .student {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .card h2 {
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #f1f1f1;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .card a {
+            display: inline-block;
+            padding: 10px 18px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .card a:hover {
+            background: rgba(255,255,255,0.35);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Machine Learning Prediction System</h1>
+    <p>Select a model to start prediction</p>
+
+    <div class="cards">
+        <!-- House Price Prediction -->
+        <div class="card house">
+            <h2>🏠 House Price Predict</h2>
+            <p>
+                Predict house prices based on location, area, BHK,
+                and property type using Machine Learning.
+            </p>
+            <a href="{% url 'house' %}">Predict House Price →</a>
+        </div>
+
+        <!-- Student Pass Fail Prediction -->
+        <div class="card student">
+            <h2>🎓 Student Pass / Fail Predict</h2>
+            <p>
+                Predict whether a student will pass or fail
+                based on study hours, attendance, and past scores.
+            </p>
+            <a href="{% url 'predict_student' %}">Predict Student Result →</a>
+        </div>
+    </div>
+
+    <footer>
+        Developed using Django & Machine Learning
+    </footer>
+</div>
+
+</body>
+</html>
