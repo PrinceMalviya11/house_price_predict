@@ -123,95 +123,6 @@
             transform: translateY(-2px);
             box-shadow: 0 12px 25px rgba(0,0,0,0.35);
         }
-{% comment %} 
-        .email-box {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 10px;
-            background: #f9fafb;
-            text-align: center;
-        }
-
-        .email-box input {
-            width: 100%;
-            padding: 8px;
-            margin: 8px 0;
-        }
-
-        .email-box button {
-            background: #16a34a;
-            color: white;
-            padding: 8px 16px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        } {% endcomment %}
-
-        .email-wrapper {
-    margin-top: 25px;
-}
-
-.email-confirm-box,
-.email-section {
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-    text-align: center;
-}
-
-.confirm-buttons {
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-}
-
-.ok-btn {
-    background: #2563eb;
-    color: white;
-    border: none;
-    padding: 10px 22px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.cancel-btn {
-    background: #e5e7eb;
-    color: #333;
-    border: none;
-    padding: 10px 22px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.email-section form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.email-input {
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 15px;
-}
-
-.send-btn {
-    padding: 12px;
-    background: linear-gradient(135deg, #16a34a, #22c55e);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-
-
     </style>
 </head>
 <body>
@@ -240,61 +151,12 @@
         <div class="result {% if 'PASS' in result %}pass{% else %}fail{% endif %}">
             Result: {{ result }}
         </div>
-
-       {% comment %} <div class="email-wrapper">
-
-    <!-- CONFIRMATION SECTION -->
-    <div id="confirmBox" class="email-confirm-box">
-        <p>📧 Do you want to send this result to your email?</p>
-
-        <div class="confirm-buttons">
-            <button type="button" class="ok-btn" onclick="showEmailForm()">OK</button>
-            <button type="button" class="cancel-btn" onclick="hideAll()">Cancel</button>
-        </div>
-    </div>
-
-    <!-- EMAIL FORM SECTION -->
-    <div id="emailForm" class="email-section" style="display: none;">
-        <form method="POST" action="{% url 'send_student_email' %}">
-            {% csrf_token %}
-
-            <!-- hidden values -->
-            <input type="hidden" name="hours" value="{{ hours }}">
-            <input type="hidden" name="attendance" value="{{ attendance }}">
-            <input type="hidden" name="past_score" value="{{ past_score }}">
-            <input type="hidden" name="result" value="{{ result }}">
-
-            <input
-                type="email"
-                name="email"
-                class="email-input"
-                placeholder="user@email.com"
-                required
-            >
-
-            <button type="submit" class="send-btn">Send</button>
-        </form>
-    </div>
-
-</div> {% endcomment %}
     {% endif %}
 
     <footer>
         ML Based Student Result Prediction
     </footer>
 </div>
-
-<script>
-function showEmailForm() {
-    document.getElementById("confirmBox").style.display = "none";
-    document.getElementById("emailForm").style.display = "block";
-}
-
-function hideAll() {
-    document.getElementById("confirmBox").style.display = "none";
-    document.getElementById("emailForm").style.display = "none";
-}
-</script>
 
 </body>
 </html>

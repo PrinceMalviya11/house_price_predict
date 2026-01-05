@@ -1,13 +1,9 @@
-from django.shortcuts import render
-
-# Create your views here.
-
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.core.mail import send_mail
-from django.shortcuts import redirect
 from django.conf import settings
 import pandas as pd
 import joblib
-from django.shortcuts import render
 
 def home(request):
     return render(request, "home.html")
@@ -74,39 +70,13 @@ def predict_student(request):
 
         result = "PASS ✅" if prediction[0] == 1 else "FAIL ❌"
         
+        return render(request, "pass_fail.html", {
+            "result": result,
+            "hours": hours,
+            "attendance": attendance,
+            "past_score": past_score
+        })
 
-    return render(request, "pass_fail.html", {"result": result})
-
-
-
-# def send_student_email(request):
-#     if request.method == "POST":
-#         email = request.POST["email"]
-#         result = request.POST["result"]
-#         hours = request.POST["hours"]
-#         attendance = request.POST["attendance"]
-#         past_score = request.POST["past_score"]
-
-#         message = f"""
-#             Student Prediction Result
-
-#             Hours of Study:{hours}
-#             Attendance: {attendance}%
-#             Past Exam Score: {past_score}
-
-#             Final Result: {result}
-
-#             (This is an ML-based prediction)
-#             """
-
-#         send_mail(
-#             subject="Student Result Prediction",
-#             message=message,
-#             from_email=settings.EMAIL_HOST_USER,
-#             recipient_list=[email],
-#             fail_silently=False,
-#         )
-
-#     return redirect("predict_student")
+    return render(request, "pass_fail.html")
 
 
